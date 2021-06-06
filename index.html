@@ -1,0 +1,92 @@
+<html>
+<head>
+<link rel="icon" href="https://lh3.googleusercontent.com/proxy/DAnC5MCOH1SESmylWyp67yaZJPbspeBq9FU-YsPqFSa_v-qV-v8ZiLpTeW8CRG35PBgymOiEWda6alaK76CQf3bhSOyTs-1uGoSRUykDfL6YWHgNgaXSZ-ZPw8fGR10wab862EJmgBvaodd8JFgym--Zb0l2Y33jqq3wl8T-mo5n-qGxjvTg77tqtgwdx8Xj3P4">
+<title>Custom Sign Generator</title>
+</head>
+<body>
+<h1>Custom Sign Generator</h1>
+<p>Sign Type: </p><select id="signType">
+<option value="oak_sign">Oak Sign</option>
+<option value="dark_oak_sign">Dark Oak Sign</option>
+<option value="birch_sign">Birch Sign</option>
+<option value="spruce_sign">Spruce Sign</option>
+<option value="jungle_sign">Jungle Sign</option>
+<option value="acacia_sign">Spruce Sign</option>
+<option value="crimson_sign">Spruce Sign</option>
+<option value="warped_sign">Spruce Sign</option>
+<option value="oak_wall_sign">Oak Wall Sign</option>
+<option value="dark_oak_wall_sign">Dark Oak Wall Sign</option>
+<option value="birch_wall_sign">Birch Wall Sign</option>
+<option value="spruce_wall_sign">Spruce Wall Sign</option>
+<option value="jungle_wall_sign">Jungle Wall Sign</option>
+<option value="acacia_wall_sign">Spruce Wall Sign</option>
+<option value="crimson_wall_sign">Spruce Wall Sign</option>
+<option value="warped_wall_sign">Spruce Wall Sign</option>
+</select>
+<p>Command when clicked? (optional): </p><input id="commands">
+<p>Text: </p><input id="text">
+<p>Color: </p>
+<select id="textColor">
+<option value="dark_red" style="background-color: #AA0000;">Dark Red</option>
+<option value="red" style="background-color: #FF5555;">Red</option>
+<option value="gold" style="background-color: #FFAA00;">Gold</option>
+<option value="yellow" style="background-color: #FFFF55;">Yellow</option>
+<option value="dark_green" style="background-color: #00AA00;">Dark Green</option>
+<option value="green" style="background-color: #55FF55;">Green</option>
+<option value="aqua" style="background-color: #55FFFF;">Aqua</option>
+<option value="dark_aqua" style="background-color: #00AAAA;">Dark Aqua</option>
+<option value="dark_blue" style="background-color: #0000AA;">Dark Blue</option>
+<option value="blue" style="background-color: #5555FF;">Blue</option>
+<option value="light_purple" style="background-color: #FF55FF;">Light Purple</option>
+<option value="dark_purple" style="background-color: #AA00AA;">Dark Purple</option>
+<option value="white" style="background-color: #FFFFFF;">White</option>
+<option value="gray" style="background-color: #AAAAAA;">Gray</option>
+<option value="dark_gray" style="background-color: #555555; color: white;">Dark Gray</option>
+<option value="black" style="background-color: #000000; color: white;">Black</option>
+</select>
+<p>Bold?: </p>
+<select id="bold">
+<option value="true">True</option>
+<option value="false">False</option>
+</select>
+<p>Italic?: </p>
+<select id="italic">
+<option value="true">True</option>
+<option value="false">False</option>
+</select>
+<p>Underline?: </p>
+<select id="underline">
+<option value="true">True</option>
+<option value="false">False</option>
+</select>
+<p>Obfuscated?: </p>
+<select id="obfuscated">
+<option value="true">True</option>
+<option value="false">False</option>
+</select>
+<p>Strikethrough?: </p>
+<select id="strikethrough">
+<option value="true">True</option>
+<option value="false">False</option>
+</select><br><br>
+<button onclick="generateCommand()">Generate Command</button>
+<p id="output"></p>
+<script>
+var command = "";
+var signType = document.getElementById("signType").selectedOptions[0].value;
+var commandwc = document.getElementById("commands");
+var text = document.getElementById("text");
+var color = document.getElementById("textColor").selectedOptions[0].value;
+var bold = document.getElementById("bold").selectedOptions[0].value;
+var italic = document.getElementById("italic").selectedOptions[0].value;
+var underline = document.getElementById("underline").selectedOptions[0].value;
+var obfuscated = document.getElementById("obfuscated").selectedOptions[0].value;
+var strikethrough = document.getElementById("strikethrough").selectedOptions[0].value;
+function generateCommand() {
+command = "/give @s " + signType + "{EntityBlockData:{Text1:'{\"text\":\"" + text.value + "\",\"color\":\"" + color + "\",\"bold\":\"" + bold + "\",\"italic\":\"" + italic + "\",\"underline\":\"" + underline + "\",\"obfuscated\":\"" + obfuscated + "\",\"strikethrough\":\"" + strikethrough + "\",\"clickEvent\":{\"action\":\"run_command\",\"value\":\"" + commandwc.value + "\"}}'}}";
+document.getElementById("output").innerHTML = command;
+}
+
+</script>
+</body>
+</html>
